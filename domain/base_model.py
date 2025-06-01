@@ -16,13 +16,14 @@ class DatasetBase(ABC):
     def limpiar(self):
         if self._datos is not None:
             self._datos = self._datos.drop_duplicates().dropna()
+            print("Datos limpiados.")
 
     def transformar(self):
         if self._datos is not None:
             self._datos.columns = self._datos.columns.str.lower().str.replace(' ', '_')
             for col in self._datos.select_dtypes(include='object').columns:
                 self._datos[col] = self._datos[col].astype(str).str.strip()
-            print("Transformaciones aplicadas.")
+            print("Transformación confirmada.")
         else:
             print("No hay datos para transformar.")
 
@@ -34,6 +35,7 @@ class DatasetBase(ABC):
                 print("Advertencia: Hay valores nulos en los datos.")
             if self._datos.duplicated().any():
                 print("Advertencia: Hay filas duplicadas.")
+            print("Validación completada.")
             return True
         except Exception as e:
             print(f"Error en validación: {e}")
@@ -42,6 +44,7 @@ class DatasetBase(ABC):
     def resumen(self):
         try:
             if self._datos is not None:
+                print("Mostrando resumen de datos:")
                 print(self._datos.describe(include='all'))
             else:
                 print("No hay datos para mostrar resumen.")
