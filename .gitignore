@@ -71,3 +71,6 @@ venv.bak/
 
 # Mac
 .DS_Store
+
+# Entornos y variables de entorno
+.env
