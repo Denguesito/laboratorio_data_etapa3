@@ -27,9 +27,8 @@ class CSVDataset(DatasetBase):
         self._datos = pd.read_csv(self._fuente)
         print("Datos cargados.")
         self.limpiar()
-        print("Datos limpiados.")
         self.validar()
-        
+    
     def mostrar_resumen(self):
         print("Mostrando resumen de datos:")
         self.resumen()

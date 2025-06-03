@@ -7,13 +7,8 @@ class ExcelDataset(DatasetBase):
         self._datos = pd.read_excel(self._fuente)
         print("Datos cargados.")
         self.limpiar()
-        print("Datos limpiados.")
         self.validar()
-        
-    def mostrar_resumen(self):
-        print("Mostrando resumen de datos:")
-        self.resumen()
-        
+
     def validar(self):
         if self._datos is None:
             raise Exception("No hay datos cargados")
@@ -23,3 +18,7 @@ class ExcelDataset(DatasetBase):
             print("Advertencia: Hay filas duplicadas.")
         print("Validación completada.")
         return True
+
+    def mostrar_resumen(self):
+        print("Mostrando resumen de datos:")
+        self.resumen()
